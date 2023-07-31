@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/moviescreen"
+    android:orientation="vertical"
+    android:paddingTop="25dp"
+    android:paddingLeft="80dp"
+    android:paddingRight="70dp"
+    android:paddingBottom="260dp"
+    tools:context=".ShowMovies">
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RETURN TO HOME" />
+
+    <Spinner
+        android:id="@+id/spnMovie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/spnMovies"/>
+
+    <ListView
+        android:id="@+id/lvMovie"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
