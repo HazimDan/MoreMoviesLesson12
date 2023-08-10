@@ -158,14 +158,6 @@
             android:layout_weight="1"
             android:text="Delete" />
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lottieDeleteAnimation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:lottie_autoPlay="false"
-            app:lottie_rawRes="@raw/animation_ll5ao6c1"
-            app:lottie_loop="false" />
-
     </LinearLayout>
     <Button
         android:id="@+id/btnPrevious"
