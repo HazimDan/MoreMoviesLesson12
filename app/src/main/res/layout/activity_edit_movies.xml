@@ -114,8 +114,8 @@
             android:fontFamily="@font/mouse_memoirs"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:inputType="text"
-            android:hint="@string/enter_year_of_release_here" />
+            android:inputType="phone"
+            android:hint="@string/enter_year_of_release_here"/>
 
         <TextView
             android:id="@+id/tvRating"
