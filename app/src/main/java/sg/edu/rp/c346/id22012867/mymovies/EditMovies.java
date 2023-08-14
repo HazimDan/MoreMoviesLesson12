@@ -78,18 +78,31 @@ public class EditMovies extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DBHelper dbh = new DBHelper(EditMovies.this);
-                data.setTitle(etMovieTitle.getText().toString());
-                data.setGenre(etGenre.getText().toString());
-                data.setYear(Integer.parseInt(etYear.getText().toString()));
+                AlertDialog.Builder myBuilder = new AlertDialog.Builder(EditMovies.this);
+                myBuilder.setTitle("Update");
+                myBuilder.setMessage("Are you sure want to update the movie " + data.getTitle());
+                myBuilder.setCancelable(false);
+                myBuilder.setPositiveButton("Cancel", null);
+                myBuilder.setNegativeButton("Update", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        DBHelper dbh = new DBHelper(EditMovies.this);
+                        data.setTitle(etMovieTitle.getText().toString());
+                        data.setGenre(etGenre.getText().toString());
+                        data.setYear(Integer.parseInt(etYear.getText().toString()));
 
-                // Get the selected rating from the Spinner
-                String selectedRating = spnRating.getSelectedItem().toString();
-                data.setRating(selectedRating);
+                        // Get the selected rating from the Spinner
+                        String selectedRating = spnRating.getSelectedItem().toString();
+                        data.setRating(selectedRating);
 
-                dbh.updateMovie(data);
-                Intent i = new Intent(EditMovies.this, ShowMovies.class);
-                startActivity(i);
+                        dbh.updateMovie(data);
+                        Intent i = new Intent(EditMovies.this, ShowMovies.class);
+                        startActivity(i);
+                    }
+                });
+                AlertDialog myDialog = myBuilder.create();
+                myDialog.show();
+
             }
         });
 
@@ -100,26 +113,7 @@ public class EditMovies extends AppCompatActivity {
                 myBuilder.setTitle("Danger");
                 myBuilder.setMessage("Are you sure want to delete the movie " + data.getTitle());
                 myBuilder.setCancelable(false);
-                myBuilder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        AlertDialog.Builder newBuilder = new AlertDialog.Builder(EditMovies.this);
-                        newBuilder.setTitle("Danger");
-                        newBuilder.setMessage("Are you sure you want discard the changes?");
-                        newBuilder.setPositiveButton("Do Not Discard", null);
-                        newBuilder.setNegativeButton("Discard", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                               Intent intent = new Intent(EditMovies.this, ShowMovies.class);
-                               startActivity(intent);
-                            }
-                        });
-                        AlertDialog myDialog = newBuilder.create();
-                        myDialog.show();
-
-
-                    }
-                });
+                myBuilder.setPositiveButton("Cancel", null);
                 myBuilder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -138,7 +132,18 @@ public class EditMovies extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                AlertDialog.Builder newBuilder = new AlertDialog.Builder(EditMovies.this);
+                newBuilder.setTitle("Danger");
+                newBuilder.setMessage("Are you sure you want discard the changes?");
+                newBuilder.setPositiveButton("Do Not Discard", null);
+                newBuilder.setNegativeButton("Discard", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+                AlertDialog myDialog = newBuilder.create();
+                myDialog.show();
             }
         });
     }
