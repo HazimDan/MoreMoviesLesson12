@@ -83,7 +83,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:text="@string/year" />
-
+//
         <EditText
             android:id="@+id/etYear"
             android:layout_width="match_parent"

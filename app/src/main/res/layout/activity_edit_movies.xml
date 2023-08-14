@@ -116,7 +116,7 @@
             android:layout_marginRight="10dp"
             android:inputType="phone"
             android:hint="@string/enter_year_of_release_here"/>
-
+//
         <TextView
             android:id="@+id/tvRating"
             android:layout_width="match_parent"
